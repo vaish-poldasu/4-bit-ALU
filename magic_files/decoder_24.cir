@@ -1,0 +1,98 @@
+Decoder(2022102068)
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param p_width=8*LAMBDA
+.param n_width=4*LAMBDA
+.global gnd 
+.global vdd
+
+
+.option scale=0.09u
+
+Vdd vdd gnd 'SUPPLY'
+V_in1 S0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+V_in2 S1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+
+
+
+
+M1000 D3 a_192_163# vdd w_235_157# CMOSP w=6 l=3
++  ad=42 pd=26 as=672 ps=392
+M1001 a_561_167# a_340_154# vdd w_543_161# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1002 a_192_163# S0 a_192_127# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=75 ps=50
+M1003 a_192_163# S1 vdd w_174_157# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1004 a_561_131# a_340_154# gnd Gnd CMOSN w=5 l=3
++  ad=75 pd=50 as=400 ps=260
+M1005 a_430_167# a_339_86# vdd w_412_161# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1006 D3 a_192_163# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1007 D0 a_430_167# vdd w_473_161# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1008 a_717_167# a_339_86# vdd w_699_161# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1009 a_430_167# a_340_154# vdd w_412_161# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1010 a_192_127# S1 gnd Gnd CMOSN w=5 l=3
++  ad=0 pd=0 as=0 ps=0
+M1011 a_430_167# a_339_86# a_430_131# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=75 ps=50
+M1012 D0 a_430_167# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1013 a_717_167# a_339_86# a_717_131# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=75 ps=50
+M1014 a_339_86# S0 gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1015 a_430_131# a_340_154# gnd Gnd CMOSN w=5 l=3
++  ad=0 pd=0 as=0 ps=0
+M1016 D2 a_717_167# vdd w_760_161# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1017 a_339_86# S0 vdd w_321_106# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1018 a_192_163# S0 vdd w_174_157# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1019 D1 a_561_167# vdd w_604_161# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1020 a_717_167# S1 vdd w_699_161# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1021 D2 a_717_167# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1022 D1 a_561_167# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1023 a_717_131# S1 gnd Gnd CMOSN w=5 l=3
++  ad=0 pd=0 as=0 ps=0
+M1024 a_340_154# S1 vdd w_322_174# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1025 a_561_167# S0 vdd w_543_161# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1026 a_340_154# S1 gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1027 a_561_167# S0 a_561_131# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+C0 gnd Gnd 5.08fF
+C1 a_339_86# Gnd 2.33fF
+C2 S0 Gnd 3.48fF
+C3 vdd Gnd 6.79fF
+C4 S1 Gnd 3.04fF
+
+.tran 0.01n 100n
+
+* .measure tran trise
+* + TRIG v(B) VAL = 'SUPPLY/2' RISE=1
+* + TARG v(out) VAL = 'SUPPLY/2' FALL=1
+
+* .measure tran tfall
+* + TRIG v(B) VAL = 'SUPPLY/2' FALL=1
+* + TARG v(out) VAL = 'SUPPLY/2' RISE=1
+
+* .measure tran tpd param = '(trise + tfall)/2' goal = 0
+.control
+run
+plot v(S0) v(S1)+2 v(D0)+4 v(D1)+6 v(D2)+8 v(D3)+10
+*quit
+.endc 
+.end

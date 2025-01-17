@@ -1,0 +1,149 @@
+AND block(2022102068)
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param p_width=8*LAMBDA
+.param n_width=4*LAMBDA
+.global gnd 
+.global vdd
+
+
+.option scale=0.09u
+
+Vdd vdd gnd 'SUPPLY'
+* V_in1 A0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+* V_in2 A1 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+* V_in3 A2 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+* V_in4 A3 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+
+* V_in5 B0 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+* V_in6 B1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+* V_in7 B2 gnd pulse(0 1.8 0ns 10ps 10ps 40ns 60ns)
+* V_in8 B3 gnd pulse(0 1.8 0ns 10ps 10ps 40ns 60ns)
+
+* V_in1 A0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+* V_in2 A1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+* V_in3 A2 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+* V_in4 A3 gnd pulse(0 1.8 0ns 10ps 10ps 40ns 60ns)
+
+* V_in5 B0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+* V_in6 B1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+* V_in7 B2 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+* V_in8 B3 gnd pulse(0 1.8 0ns 10ps 10ps 40ns 60ns)
+
+V_in1 A0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+V_in2 A1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+V_in3 A2 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+V_in4 A3 gnd pulse(0 1.8 0ns 10ps 10ps 40ns 60ns)
+
+V_in5 B0 gnd pulse(0 1.8 0ns 10ps 10ps 10ns 20ns)
+V_in6 B1 gnd pulse(0 1.8 0ns 10ps 10ps 20ns 40ns)
+V_in7 B2 gnd pulse(0 1.8 0ns 10ps 10ps 30ns 50ns)
+V_in8 B3 gnd dc SUPPLY
+
+M1000 Y2 a_128_39# vdd w_171_33# CMOSP w=6 l=3
++  ad=42 pd=26 as=576 ps=336
+M1001 Y0 a_416_39# vdd w_459_33# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1002 a_128_3# A2 gnd Gnd CMOSN w=5 l=3
++  ad=75 pd=50 as=320 ps=208
+M1003 Y2 a_128_39# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1004 a_416_3# A0 gnd Gnd CMOSN w=5 l=3
++  ad=75 pd=50 as=0 ps=0
+M1005 Y0 a_416_39# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1006 a_128_39# B2 a_128_3# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1007 a_128_39# A2 vdd w_110_33# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1008 a_416_39# A0 vdd w_398_33# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1009 a_416_39# B0 a_416_3# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1010 a_128_39# B2 vdd w_110_33# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1011 a_416_39# B0 vdd w_398_33# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1012 a_n11_39# A3 vdd w_n29_33# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1013 a_n11_39# B3 a_n11_3# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=75 ps=50
+M1014 a_n11_39# B3 vdd w_n29_33# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1015 a_266_3# A1 gnd Gnd CMOSN w=5 l=3
++  ad=75 pd=50 as=0 ps=0
+M1016 Y1 a_266_39# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1017 Y1 a_266_39# vdd w_309_33# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1018 a_266_39# A1 vdd w_248_33# CMOSP w=6 l=3
++  ad=84 pd=52 as=0 ps=0
+M1019 a_266_39# B1 vdd w_248_33# CMOSP w=6 l=3
++  ad=0 pd=0 as=0 ps=0
+M1020 a_266_39# B1 a_266_3# Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1021 Y3 a_n11_39# gnd Gnd CMOSN w=5 l=3
++  ad=35 pd=24 as=0 ps=0
+M1022 Y3 a_n11_39# vdd w_32_33# CMOSP w=6 l=3
++  ad=42 pd=26 as=0 ps=0
+M1023 a_n11_3# A3 gnd Gnd CMOSN w=5 l=3
++  ad=0 pd=0 as=0 ps=0
+
+.tran 0.01n 100n
+
+.measure tran trise
++ TRIG v(A0) VAL = 'SUPPLY/2' RISE=1
++ TARG v(Y0) VAL = 'SUPPLY/2' RISE=1
+
+.measure tran tfall
++ TRIG v(A0) VAL = 'SUPPLY/2' FALL=1
++ TARG v(Y0) VAL = 'SUPPLY/2' FALL=1
+
+.measure tran tpd_A0 param = '(trise + tfall)/2' goal = 0
+
+.measure tran trise1
++ TRIG v(A1) VAL = 'SUPPLY/2' RISE=1
++ TARG v(Y1) VAL = 'SUPPLY/2' RISE=1
+
+.measure tran tfall1
++ TRIG v(A1) VAL = 'SUPPLY/2' FALL=1
++ TARG v(Y1) VAL = 'SUPPLY/2' FALL=1
+
+.measure tran tpd_A1 param = '(trise1 + tfall1)/2' goal = 0
+
+.measure tran trise2
++ TRIG v(A2) VAL = 'SUPPLY/2' RISE=1
++ TARG v(Y2) VAL = 'SUPPLY/2' RISE=1
+
+.measure tran tfall2
++ TRIG v(A2) VAL = 'SUPPLY/2' FALL=1
++ TARG v(Y2) VAL = 'SUPPLY/2' FALL=1
+
+.measure tran tpd_A2 param = '(trise2 + tfall2)/2' goal = 0
+
+.measure tran trise3
++ TRIG v(A3) VAL = 'SUPPLY/2' RISE=1
++ TARG v(Y3) VAL = 'SUPPLY/2' RISE=1
+
+.measure tran tfall3
++ TRIG v(A3) VAL = 'SUPPLY/2' FALL=1
++ TARG v(Y3) VAL = 'SUPPLY/2' FALL=1
+
+.measure tran tpd_A3 param = '(trise3 + tfall3)/2' goal = 0
+
+* .measure tran trise4
+* + TRIG v(B3) VAL = 'SUPPLY/2' RISE=1
+* + TARG v(Y3) VAL = 'SUPPLY/2' RISE=1
+
+* .measure tran tfall4
+* + TRIG v(B3) VAL = 'SUPPLY/2' FALL=1
+* + TARG v(Y3) VAL = 'SUPPLY/2' FALL=1
+
+* .measure tran tpd_B3 param = '(trise4 + tfall4)/2' goal = 0
+.control
+run
+plot v(A0) v(A1)+2 v(A2)+4 v(A3)+6 v(B0)+8 v(B1)+10 v(B2)+12 v(B3)+14 v(Y0)+16 v(Y1)+18 v(Y2)+20 v(Y3)+22
+*quit
+.endc 
+.end
